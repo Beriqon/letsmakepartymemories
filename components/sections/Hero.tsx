@@ -56,7 +56,7 @@ export default function Hero() {
             animate="visible"
           >
             <motion.h1
-              className="mb-6 whitespace-nowrap text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl font-serif"
+              className="mb-6 whitespace-normal break-words text-4xl font-bold leading-tight tracking-tight text-white sm:whitespace-nowrap sm:text-5xl lg:text-6xl font-serif"
               variants={itemVariants}
             >
               Let's Make Party Memories

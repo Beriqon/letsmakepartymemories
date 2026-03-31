@@ -195,7 +195,7 @@ export default function BookingForm() {
                 htmlFor="locatie"
                 className="mb-2 block text-sm font-medium text-[#F5F5F5]"
               >
-                Waar is het event? (straat, huisnummer, stad)
+                Waar is het evenement? (straat, huisnummer, stad)
               </label>
               <input
                 type="text"

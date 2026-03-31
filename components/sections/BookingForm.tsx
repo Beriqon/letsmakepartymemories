@@ -15,7 +15,7 @@ export default function BookingForm() {
     begintijd: "18:00",
     eindtijd: "22:00",
     locatie: "",
-    bericht: "Hey, Lets make party memories, ",
+    bericht: "Hi Let's Make Party Memories, ",
   });
 
   const handleChange = (
@@ -53,7 +53,7 @@ export default function BookingForm() {
           begintijd: "18:00",
           eindtijd: "22:00",
           locatie: "",
-          bericht: "Hey, Lets make party memories, ",
+          bericht: "Hi Let's Make Party Memories, ",
         });
       } else {
         setSubmitted(false);
@@ -77,12 +77,9 @@ export default function BookingForm() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="mb-6 text-4xl font-bold text-[#F5F5F5] md:text-5xl lg:text-6xl font-serif leading-tight">
-            Boek jouw Photobooth
+          <h2 className="mb-6 text-4xl font-bold text-[#C8A45B] md:text-5xl lg:text-6xl font-serif leading-tight">
+            Boek nú jouw luxe mirror photobooth
           </h2>
-          <p className="text-lg leading-relaxed text-[#F5F5F5] md:text-xl">
-            Stuur je datum en locatie. Wij reageren snel met beschikbaarheid.
-          </p>
         </motion.div>
 
         <motion.div
@@ -138,7 +135,7 @@ export default function BookingForm() {
                 htmlFor="datum"
                 className="mb-2 block text-sm font-medium text-[#F5F5F5]"
               >
-                Datum van het event
+                Datum van het evenement
               </label>
               <input
                 type="date"

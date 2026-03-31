@@ -96,28 +96,21 @@ export default function Header() {
 
         {/* Mobile Menu */}
         <div
-          className={`overflow-hidden transition-all duration-300 md:hidden ${
+          className={`md:hidden overflow-hidden transition-all duration-300 ${
             isMobileMenuOpen ? "max-h-96 pb-4" : "max-h-0"
-          }`}
+          } bg-[#111111]/80 backdrop-blur-xl border-t border-[#C8A45B]/20`}
         >
-          <div className="flex flex-col gap-4 pt-4">
+          <div className="flex flex-col gap-3 pt-4">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={handleLinkClick}
-                className="text-[#F5F5F5] transition-colors hover:text-[#C8A45B] font-medium py-2"
+                className="rounded-lg px-2 py-3 text-[#F5F5F5] transition-colors hover:text-[#C8A45B] font-medium"
               >
                 {link.label}
               </a>
             ))}
-            <a
-              href="#contact"
-              onClick={handleLinkClick}
-              className="cta-gold inline-flex h-12 w-full items-center justify-center rounded-full bg-[#C8A45B] px-8 text-base font-semibold text-[#0B0B0B] shadow-md transition-all hover:bg-[#C8A45B] hover:shadow-xl active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#C8A45B]/50 focus:ring-offset-2 focus:ring-offset-[#111111]"
-            >
-              Boek jouw photobooth
-            </a>
           </div>
         </div>
       </nav>

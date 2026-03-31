@@ -1,8 +1,6 @@
 "use client";
 
-import useEmblaCarousel from "embla-carousel-react";
-import Autoplay from "embla-carousel-autoplay";
-import { useCallback, useEffect, useState, useRef } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 
 export interface GalleryImage {
@@ -18,113 +16,130 @@ interface GalleryCarouselProps {
 }
 
 export default function GalleryCarousel({ images }: GalleryCarouselProps) {
-  const autoplayRef = useRef(
-    Autoplay({
-      delay: 4000,
-      stopOnInteraction: false,
-      stopOnMouseEnter: true,
-    })
-  );
+  const AUTOPLAY_DELAY_MS = 4000; // om de zoveel seconde 1 slide
+  const TRANSITION_MS = 650;
 
-  const [emblaRef, emblaApi] = useEmblaCarousel(
-    {
-      loop: true,
-      align: "center",
-      containScroll: "trimSnaps",
-      skipSnaps: false,
-      dragFree: false,
-    },
-    [autoplayRef.current]
-  );
+  const hiddenKeywords = useMemo(() => {
+    // Niet zichtbaar (sr-only), maar wel in de DOM per foto.
+    // Amersfoort-varianten iets vaker.
+    const terms = [
+      "Photobooth huren Amersfoort",
+      "Photobooth huren Amersfoort",
+      "Photobooth huren Amersfoort",
+      "mirrorbooth huren amersfoort",
+      "mirrorbooth huren amersfoort",
+      "fotobooth huren amersfoort",
+      "fotobooth huren amersfoort",
+      "Photobooth huren utrecht",
+      "Mirrorbooth huren utrecht",
+      "fotobooth huren utrecht",
+      "Fotobooth huren voor verjaardag",
+      "Photobooth huren voor verjaardag",
+      "Mirrorbooth huren voor verjaardag",
+      "Mirrorbooth huren voor bruiloft",
+      "Mirrorbooth huren voor feest",
+      "Fotobooth huren voor bruiloft",
+      "Fotobooth huren voor feest",
+      "Fotobooth huren arnhem",
+    ];
 
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [isDragging, setIsDragging] = useState(false);
+    return terms.join(" • ");
+  }, []);
 
-  const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
-  }, [emblaApi]);
+  const initialItems = useMemo(() => images, [images]);
+  const [items, setItems] = useState<GalleryImage[]>(initialItems);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [offsetPx, setOffsetPx] = useState(0);
 
-  const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
-  }, [emblaApi]);
+  const viewportRef = useRef<HTMLDivElement | null>(null);
+  const firstSlideRef = useRef<HTMLDivElement | null>(null);
+  const slideStepRef = useRef<number>(0);
 
-  const onSelect = useCallback(() => {
-    if (!emblaApi) return;
-    setSelectedIndex(emblaApi.selectedScrollSnap());
-  }, [emblaApi]);
+  // Keep state in sync if parent changes images
+  useEffect(() => {
+    setItems(images);
+    setOffsetPx(0);
+    setIsAnimating(false);
+  }, [images]);
+
+  const measureStep = useCallback(() => {
+    const el = firstSlideRef.current;
+    if (!el) return;
+    const step = el.getBoundingClientRect().width;
+    if (step > 0) slideStepRef.current = step;
+  }, []);
+
+  useLayoutEffect(() => {
+    measureStep();
+  }, [measureStep, items.length]);
 
   useEffect(() => {
-    if (!emblaApi) return;
+    // Re-measure on resize so spacing stays exact
+    const onResize = () => measureStep();
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, [measureStep]);
 
-    onSelect();
-    emblaApi.on("select", onSelect);
-    emblaApi.on("reInit", onSelect);
+  const animateNext = useCallback(() => {
+    if (isAnimating) return;
+    const step = slideStepRef.current;
+    if (!step || items.length < 2) return;
+    setIsAnimating(true);
+    setOffsetPx(-step);
+  }, [isAnimating, items.length]);
 
-    // Pause autoplay during drag
-    const handlePointerDown = () => {
-      setIsDragging(true);
-      autoplayRef.current.stop();
-    };
+  const animatePrev = useCallback(() => {
+    if (isAnimating) return;
+    const step = slideStepRef.current;
+    if (!step || items.length < 2) return;
 
-    const handlePointerUp = () => {
-      setIsDragging(false);
-      if (isPlaying) {
-        autoplayRef.current.play();
-      }
-    };
+    // Put last item in front instantly, then animate back to 0
+    setIsAnimating(true);
+    setItems((prev) => {
+      const last = prev[prev.length - 1]!;
+      const rest = prev.slice(0, -1);
+      return [last, ...rest];
+    });
+    setOffsetPx(-step);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => setOffsetPx(0));
+    });
+  }, [isAnimating, items.length]);
 
-    emblaApi.on("pointerDown", handlePointerDown);
-    emblaApi.on("pointerUp", handlePointerUp);
+  const scrollPrev = useCallback(() => {
+    animatePrev();
+  }, [animatePrev]);
 
-    return () => {
-      emblaApi.off("select", onSelect);
-      emblaApi.off("reInit", onSelect);
-      emblaApi.off("pointerDown", handlePointerDown);
-      emblaApi.off("pointerUp", handlePointerUp);
-    };
-  }, [emblaApi, onSelect, isPlaying]);
+  const scrollNext = useCallback(() => {
+    animateNext();
+  }, [animateNext]);
+
+  useEffect(() => {
+    const id = window.setInterval(() => {
+      animateNext();
+    }, AUTOPLAY_DELAY_MS);
+    return () => window.clearInterval(id);
+  }, [animateNext]);
 
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Only handle if not typing in an input
       if (
         e.target instanceof HTMLInputElement ||
         e.target instanceof HTMLTextAreaElement
       ) {
         return;
       }
-      if (e.key === "ArrowLeft") {
-        scrollPrev();
-      } else if (e.key === "ArrowRight") {
-        scrollNext();
-      }
+      if (e.key === "ArrowLeft") scrollPrev();
+      if (e.key === "ArrowRight") scrollNext();
     };
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [scrollPrev, scrollNext]);
 
-  // Pause on hover
-  const handleMouseEnter = useCallback(() => {
-    autoplayRef.current.stop();
-    setIsPlaying(false);
-  }, []);
-
-  const handleMouseLeave = useCallback(() => {
-    if (!isDragging) {
-      autoplayRef.current.play();
-      setIsPlaying(true);
-    }
-  }, [isDragging]);
-
   return (
-    <div
-      className="relative"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
+    <div className="relative">
       {/* Navigation Buttons */}
       <button
         onClick={scrollPrev}
@@ -166,15 +181,42 @@ export default function GalleryCarousel({ images }: GalleryCarouselProps) {
         </svg>
       </button>
 
-      {/* Carousel Viewport - Center mode with clipped side cards */}
-      <div className="overflow-hidden mx-auto max-w-7xl" ref={emblaRef}>
-        <div className="flex embla__container gap-2 md:gap-3 lg:gap-4">
-          {images.map((image, index) => (
+      {/* Carousel Viewport */}
+      <div className="mx-auto max-w-7xl overflow-hidden" ref={viewportRef}>
+        <div
+          className="flex -ml-2 md:-ml-3 lg:-ml-4"
+          style={{
+            transform: `translate3d(${offsetPx}px, 0, 0)`,
+            transition: isAnimating ? `transform ${TRANSITION_MS}ms ease-in-out` : "none",
+            willChange: "transform",
+          }}
+          onTransitionEnd={() => {
+            const step = slideStepRef.current;
+            if (!step) {
+              setIsAnimating(false);
+              setOffsetPx(0);
+              return;
+            }
+
+            // If we just moved left by 1 step, rotate items and reset transform to 0.
+            if (offsetPx === -step) {
+              setItems((prev) => {
+                const [first, ...rest] = prev;
+                return first ? [...rest, first] : prev;
+              });
+            }
+
+            setIsAnimating(false);
+            setOffsetPx(0);
+          }}
+        >
+          {items.map((image, idx) => (
             <div
-              key={image.id}
+              key={`${image.id}-${idx}`}
+              ref={idx === 0 ? firstSlideRef : undefined}
               className="flex-[0_0_100%] md:flex-[0_0_380px] lg:flex-[0_0_380px] min-w-0"
             >
-              <div className="h-full">
+              <div className="h-full pl-2 md:pl-3 lg:pl-4">
                 <div className="group relative overflow-hidden rounded-2xl aspect-[4/5] cursor-pointer bg-[#111111]/40 ring-1 ring-[#C8A45B]/15">
                   <Image
                     src={image.src}
@@ -184,7 +226,7 @@ export default function GalleryCarousel({ images }: GalleryCarouselProps) {
                     style={{ transform: `scale(${image.zoom ?? 1})` }}
                     sizes="(max-width: 768px) 100vw, 380px"
                   />
-                  {/* Hover overlay */}
+                  <span className="sr-only">{hiddenKeywords}</span>
                   <div className="absolute inset-0 bg-[#C8A45B]/0 group-hover:bg-[#C8A45B]/10 transition-all duration-300" />
                 </div>
               </div>

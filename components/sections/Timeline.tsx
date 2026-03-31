@@ -11,7 +11,7 @@ const steps = [
   {
     number: "02",
     title: "Telefonisch overleg",
-    description: "We plannen een kort gesprek waarin we het event en het design van de fotostrip bespreken.",
+    description: "We plannen een kort gesprek waarin we het evenement en het design van de fotostrip bespreken.",
   },
   {
     number: "03",
@@ -20,8 +20,9 @@ const steps = [
   },
   {
     number: "04",
-    title: "Het event",
-    description: "Wij leveren en installeren de mirror booth op locatie zodat uw gasten direct foto's kunnen maken.",
+    title: "Het evenement",
+    description:
+      "Wij leveren de photobooth en zetten alles op naar wens. Het enige wat nog rest is een spetterend evenement!! Wij komen de photobooth hierna afbouwen en ophalen op het afgesproken tijdstip.",
   },
 ];
 
@@ -36,7 +37,7 @@ export default function Timeline() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="mb-6 text-4xl font-bold text-[#F5F5F5] md:text-5xl lg:text-6xl font-serif leading-tight">
+          <h2 className="mb-6 text-4xl font-bold text-[#C8A45B] md:text-5xl lg:text-6xl font-serif leading-tight">
             Hoe werkt het?
           </h2>
         </motion.div>

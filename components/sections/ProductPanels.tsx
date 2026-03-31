@@ -15,10 +15,10 @@ export default function ProductPanels() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="mb-4 text-4xl font-bold text-[#C8A45B] md:text-5xl lg:text-6xl font-serif leading-tight">
-            Photobooth
+            Luxe Mirror Photobooth
           </h2>
           <p className="text-lg text-[#F5F5F5]/80 md:text-xl leading-relaxed">
-            Alles wat je nodig hebt voor een onvergetelijk event.
+            Alles wat je nodig hebt voor een onvergetelijk evenement.
           </p>
         </motion.div>
 
@@ -34,13 +34,13 @@ export default function ProductPanels() {
             >
               <div className="pointer-events-none absolute inset-0 rounded-[28px] opacity-0 transition-opacity duration-300 group-hover:opacity-100 bg-[radial-gradient(900px_circle_at_30%_0%,rgba(200,164,91,0.10),transparent_55%)]" />
               {/* Title */}
-              <h3 className="mb-5 text-3xl font-bold text-[#F5F5F5] md:text-4xl lg:text-[42px] font-serif leading-tight tracking-tight">
+              <h3 className="mb-5 text-3xl font-bold text-[#C8A45B] md:text-4xl lg:text-[42px] font-serif leading-tight tracking-tight">
                 Huur een luxe mirror photobooth
               </h3>
 
               {/* Price */}
               <div className="mb-7">
-                <div className="text-6xl font-bold text-[#C8A45B] md:text-7xl lg:text-8xl font-serif tracking-tight leading-none drop-shadow-[0_6px_22px_rgba(200,164,91,0.20)]">
+                <div className="text-6xl font-bold text-[#F5F5F5] md:text-7xl lg:text-8xl font-serif tracking-tight leading-none drop-shadow-[0_6px_22px_rgba(200,164,91,0.20)]">
                   €345
                 </div>
                 <div className="text-sm text-[#F5F5F5]/70 mt-2">
@@ -49,118 +49,6 @@ export default function ProductPanels() {
               </div>
 
               {/* Description */}
-              <p className="mb-9 text-base md:text-[15px] leading-relaxed text-[#F5F5F5]/80">
-                Een luxe mirror photobooth ervaring voor jouw event met onbeperkte prints en professionele begeleiding.
-              </p>
-
-              {/* Key Features */}
-              <ul className="mb-10 space-y-4">
-                <li className="flex items-start gap-3.5">
-                  <svg
-                    className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#C8A45B]"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                  <span className="text-sm text-[#F5F5F5] md:text-base leading-relaxed">
-                    Geen uur limiet (wel tijdsafspraak)
-                  </span>
-                </li>
-                <li className="flex items-start gap-3.5">
-                  <svg
-                    className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#C8A45B]"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                  <span className="text-sm text-[#F5F5F5] md:text-base leading-relaxed">Onbeperkt prints</span>
-                </li>
-                <li className="flex items-start gap-3.5">
-                  <svg
-                    className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#C8A45B]"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                  <span className="text-sm text-[#F5F5F5] md:text-base leading-relaxed">
-                    Rode loper + luxe paaltjes
-                  </span>
-                </li>
-                <li className="flex items-start gap-3.5">
-                  <svg
-                    className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#C8A45B]"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                  <span className="text-sm text-[#F5F5F5] md:text-base leading-relaxed">Props en achtergronden</span>
-                </li>
-                <li className="flex items-start gap-3.5">
-                  <svg
-                    className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#C8A45B]"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                  <span className="text-sm text-[#F5F5F5] md:text-base leading-relaxed">
-                    Persoonlijk ontwerp van de fotostrip
-                  </span>
-                </li>
-                <li className="flex items-start gap-3.5">
-                  <svg
-                    className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#C8A45B]"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                  <span className="text-sm text-[#F5F5F5] md:text-base leading-relaxed">
-                    Gratis levering binnen 50 km van Amersfoort
-                  </span>
-                </li>
-              </ul>
-
               {/* CTA Button */}
               <Link
                 href="#contact"
@@ -187,7 +75,7 @@ export default function ProductPanels() {
                 {/* Photobooth Group */}
                 <div className="h-full rounded-2xl border border-[#C8A45B]/15 bg-[#0B0B0B]/35 px-4 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
                   <h4 className="mb-3 text-lg md:text-xl font-semibold text-[#F5F5F5] font-serif">
-                    Photobooth
+                    Luxe Mirror Photobooth
                   </h4>
                   <ul className="space-y-2.5">
                     <li className="flex items-start gap-3.5">
@@ -223,7 +111,25 @@ export default function ProductPanels() {
                         />
                       </svg>
                       <span className="text-sm text-[#F5F5F5]/90 md:text-base leading-relaxed">
-                        Onbeperkt prints voor gasten
+                        Onbeperkt printen
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-3.5">
+                      <svg
+                        className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#C8A45B]"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      <span className="text-sm text-[#F5F5F5]/90 md:text-base leading-relaxed">
+                        Rode loper + luxe paaltjes
                       </span>
                     </li>
                     <li className="flex items-start gap-3.5">
@@ -304,7 +210,7 @@ export default function ProductPanels() {
                         />
                       </svg>
                       <span className="text-sm text-[#F5F5F5]/90 md:text-base leading-relaxed">
-                        Beginscherm aangepast aan naam, kleuren of thema
+                        Beginschermpassend bij het design van de fotostrip
                       </span>
                     </li>
                   </ul>
@@ -367,7 +273,7 @@ export default function ProductPanels() {
                         />
                       </svg>
                       <span className="text-sm text-[#F5F5F5]/90 md:text-base leading-relaxed">
-                        Professionele begeleiding tijdens het event
+                        Installatie en op-en afbouw door Peter & Lisa
                       </span>
                     </li>
                     <li className="flex items-start gap-3.5">
@@ -412,7 +318,7 @@ export default function ProductPanels() {
                         />
                       </svg>
                       <span className="text-sm text-[#F5F5F5]/90 md:text-base leading-relaxed">
-                        Gratis levering binnen 50 km van Amersfoort
+                        Gratis haal- en brengservice binnen een straal van 50 km vanaf Amersfoort
                       </span>
                     </li>
                     <li className="flex items-start gap-3.5">
@@ -430,7 +336,7 @@ export default function ProductPanels() {
                         />
                       </svg>
                       <span className="text-sm text-[#F5F5F5]/90 md:text-base leading-relaxed">
-                        Buiten 50 km: €0,25 per km
+                        Buiten de straal van 50 km vanaf Amersfoort rekenen we €0,25 cent per km.
                       </span>
                     </li>
                     <li className="flex items-start gap-3.5">

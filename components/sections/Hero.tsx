@@ -81,17 +81,6 @@ export default function Hero() {
               </Link>
             </motion.div>
 
-            {/* Trust Metrics */}
-            <motion.div
-              className="flex flex-wrap items-center justify-center gap-6 text-sm text-white/80 lg:text-base"
-              variants={itemVariants}
-            >
-              <span className="font-medium">100+ events</span>
-              <span className="text-white/30">•</span>
-              <span className="font-medium">onbeperkt prints</span>
-              <span className="text-white/30">•</span>
-              <span className="font-medium">Door heel Nederland</span>
-            </motion.div>
           </motion.div>
         </div>
       </div>

@@ -25,6 +25,11 @@ body {
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
 
+html,
+body {
+  overflow-x: clip;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-playfair), Georgia, 'Times New Roman', serif;
 }
@@ -181,6 +186,7 @@ input[type="time"]::-webkit-datetime-edit-ampm-field {
   background: linear-gradient(90deg, #f6e6b4 0%, #e6c878 25%, #caa14a 50%, #f2d48f 75%, #b88a2e 100%);
   background-size: 200% 100%;
   animation: goldShine 8s ease-in-out infinite;
+  animation-direction: reverse;
   box-shadow: 
     0 0 10px rgba(202, 161, 74, 0.5),
     0 0 20px rgba(202, 161, 74, 0.3);
@@ -197,9 +203,9 @@ input[type="time"]::-webkit-datetime-edit-ampm-field {
 
 @keyframes goldShineVertical {
   0% {
-    background-position: center -200%;
+    background-position: center 200%;
   }
   100% {
-    background-position: center 200%;
+    background-position: center -200%;
   }
 }

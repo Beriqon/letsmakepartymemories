@@ -73,12 +73,9 @@ export default function Reviews() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="mb-4 text-4xl font-bold text-[#F5F5F5] md:text-5xl lg:text-6xl font-serif leading-tight">
+          <h2 className="mb-4 text-4xl font-bold text-[#C8A45B] md:text-5xl lg:text-6xl font-serif leading-tight">
             Reviews
           </h2>
-          <p className="text-sm text-[#F5F5F5]/70 md:text-base">
-            Meer reviews op aanvraag.
-          </p>
         </motion.div>
 
         <ReviewsCarousel reviews={reviews} />

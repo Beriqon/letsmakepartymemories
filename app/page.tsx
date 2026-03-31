@@ -21,29 +21,18 @@ export default function Home() {
       <Reviews />
       <BookingForm />
 
-      <footer className="border-t border-[#C8A45B]/30 bg-[#111111] py-16 md:py-20">
+      <footer className="border-t border-[#C8A45B]/30 bg-[#111111] py-12 md:py-14">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4 mb-12">
-            {/* Kolom 1: Logo + Tagline + Mini Trust */}
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 mb-8">
+            {/* Kolom 1: Logo */}
             <div>
-              <div className="mb-4">
-                <Image
-                  src="/logo/lmpm-logo.png"
-                  alt="Let's Make Party Memories Logo"
-                  width={120}
-                  height={48}
-                  className="h-auto mb-3"
-                />
-                <h3 className="text-lg font-semibold text-[#F5F5F5] font-serif">Let's Make Party Memories</h3>
-              </div>
-              <p className="mb-4 text-sm leading-relaxed text-[#F5F5F5]/70">
-                Luxe mirror photobooth verhuur
-              </p>
-              <div className="text-xs leading-relaxed text-[#F5F5F5]/60">
-                <p>100+ events</p>
-                <p>onbeperkt prints</p>
-                <p>Door heel Nederland</p>
-              </div>
+              <Image
+                src="/logo/lmpm-logo-transparant-def.png"
+                alt="Let's Make Party Memories Logo"
+                width={240}
+                height={96}
+                className="h-auto -mt-10 md:-mt-16"
+              />
             </div>
 
             {/* Kolom 2: Navigatie */}
@@ -60,7 +49,7 @@ export default function Home() {
                   href="#products"
                   className="text-sm text-[#F5F5F5]/70 transition-all hover:text-[#F5F5F5] hover:underline underline-offset-2"
                 >
-                  Mirror Booth
+                  Luxe mirror photobooth
                 </a>
                 <a
                   href="#reviews"
@@ -133,24 +122,6 @@ export default function Home() {
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/>
                   </svg>
-                </a>
-              </div>
-            </div>
-
-            {/* Kolom 4: CTA Kaart */}
-            <div>
-              <div className="rounded-2xl bg-[#0B0B0B]/60 p-6 shadow-md backdrop-blur-sm border border-[#C8A45B]/20">
-                <h4 className="mb-2 text-base font-semibold text-[#F5F5F5] font-serif">
-                  Boek jouw datum
-                </h4>
-                <p className="mb-4 text-xs leading-relaxed text-[#F5F5F5]/70">
-                  Stuur datum + type event, wij reageren snel.
-                </p>
-                <a
-                  href="#contact"
-                  className="cta-gold inline-flex h-11 w-full items-center justify-center rounded-full bg-[#C8A45B] px-6 text-sm font-semibold text-[#0B0B0B] shadow-sm transition-all hover:bg-[#C8A45B] hover:shadow-md hover:scale-105 active:scale-100 focus:outline-none focus:ring-2 focus:ring-[#C8A45B]/50 focus:ring-offset-2"
-                >
-                  Boek booth
                 </a>
               </div>
             </div>

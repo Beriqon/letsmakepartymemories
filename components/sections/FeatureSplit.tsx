@@ -52,7 +52,7 @@ export default function FeatureSplit() {
 
                     {/* RIGHT: TEXT */}
                     <div>
-                      <h3 className="mb-4 text-3xl font-semibold text-[#F5F5F5] md:text-4xl font-serif leading-tight">
+                      <h3 className="mb-4 whitespace-normal md:whitespace-nowrap text-2xl font-semibold text-[#C8A45B] sm:text-3xl md:text-4xl font-serif leading-tight">
                         {feature.title}
                       </h3>
                       <p className="mb-6 text-lg leading-relaxed text-[#F5F5F5]/80 md:text-xl">
@@ -85,7 +85,7 @@ export default function FeatureSplit() {
                   <div className="grid items-start gap-10 lg:gap-14 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]">
                     {/* LEFT: TEXT */}
                     <div>
-                      <h3 className="mb-4 text-3xl font-semibold text-[#F5F5F5] md:text-4xl font-serif leading-tight">
+                      <h3 className="mb-4 text-3xl font-semibold text-[#C8A45B] md:text-4xl font-serif leading-tight">
                         {feature.title}
                       </h3>
                       <p className="mb-6 text-lg leading-relaxed text-[#F5F5F5]/80 md:text-xl">

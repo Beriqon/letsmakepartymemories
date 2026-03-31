@@ -72,8 +72,8 @@ export default function VideoDemo() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="mb-6 text-4xl font-bold text-[#F5F5F5] md:text-5xl lg:text-6xl font-serif leading-tight">
-            Zo ziet een event met onze photobooth eruit
+          <h2 className="mb-6 text-4xl font-bold text-[#C8A45B] md:text-5xl lg:text-6xl font-serif leading-tight">
+            Zo ziet een evenement met onze photobooth{"\u00A0"}eruit
           </h2>
           <p className="text-xl leading-relaxed text-[#F5F5F5] md:text-2xl">
             Van bruiloften tot verjaardagen – onze photobooth maakt elk moment onvergetelijk.

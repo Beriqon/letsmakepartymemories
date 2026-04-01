@@ -10,12 +10,12 @@ const steps = [
   },
   {
     number: "02",
-    title: "Telefonisch overleg",
-    description: "We plannen een kort gesprek waarin we het evenement en het design van de fotostrip bespreken.",
+    title: "Telefonische afspraak",
+    description: "We plannen een telefonische afspraak waarin we het evenement en het design van de fotostrip bespreken.",
   },
   {
     number: "03",
-    title: "Ontwerp goedkeuren",
+    title: "Design persoonlijke fotostrip",
     description: "Uw persoonlijke fotostrip wordt ontworpen en per mail gestuurd zodat u deze kunt controleren.",
   },
   {
@@ -28,7 +28,7 @@ const steps = [
 
 export default function Timeline() {
   return (
-    <section id="how" className="bg-[#1A1A1A] py-24 md:py-32">
+    <section id="how" className="bg-[#1A1A1A] pt-12 pb-16 md:pt-12 md:pb-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           className="mb-20 text-center"

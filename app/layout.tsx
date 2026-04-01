@@ -24,8 +24,9 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Let's Make Party Memories - Luxe Mirror Photobooth",
-  description: "Luxe mirror photobooth verhuur voor bruiloften, verjaardagen en bedrijfsfeesten. Onbeperkt prints, rode loper, props en professionele opzet door heel Nederland.",
+  title: "Photobooth huren | Let's Make Party Memories",
+  description:
+    "Huur een photobooth voor jouw event. Onbeperkt foto's, prints en luxe props. Boek direct.",
 };
 
 export default function RootLayout({

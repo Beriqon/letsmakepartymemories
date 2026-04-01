@@ -21,23 +21,23 @@ export default function Home() {
       <Reviews />
       <BookingForm />
 
-      <footer className="border-t border-[#C8A45B]/30 bg-[#111111] py-12 md:py-14">
+      <footer className="border-t border-[#C8A45B]/30 bg-[#111111] py-7 md:py-14">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 mb-8">
-            {/* Kolom 1: Logo */}
-            <div>
+          <div className="grid grid-cols-1 gap-0 md:gap-10 md:grid-cols-2 lg:grid-cols-3 mb-6 md:mb-8">
+            {/* Kolom 1: Logo — op mobiel strakker tot Navigatie; grid-gap weer vol voor Nav↔Contact via mb op nav-blok */}
+            <div className="mb-0 -mb-3 flex justify-center md:mb-0 md:block md:leading-normal leading-none">
               <Image
                 src="/logo/lmpm-logo-transparant-def.png"
                 alt="Let's Make Party Memories Logo"
                 width={240}
                 height={96}
-                className="h-auto -mt-10 md:-mt-16"
+                className="block h-auto max-w-[240px] w-auto mx-auto md:mx-0 md:w-full -mt-10 md:-mt-16"
               />
             </div>
 
             {/* Kolom 2: Navigatie */}
-            <div>
-              <h4 className="mb-4 text-base font-semibold text-[#F5F5F5] font-serif">Navigatie</h4>
+            <div className="-mt-3 mb-10 md:mb-0 md:mt-0">
+              <h4 className="mb-3 md:mb-4 text-base font-semibold text-[#F5F5F5] font-serif">Navigatie</h4>
               <nav className="flex flex-col gap-3">
                 <a
                   href="#how"
@@ -128,7 +128,7 @@ export default function Home() {
           </div>
 
           {/* Onderbalk */}
-          <div className="border-t border-[#C8A45B]/30 pt-6">
+          <div className="border-t border-[#C8A45B]/30 pt-4 md:pt-6">
             <div className="flex flex-col items-center justify-center gap-2">
               <p className="text-xs text-[#F5F5F5]/60">
                 © 2026 Let's Make Party Memories

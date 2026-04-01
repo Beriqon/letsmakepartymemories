@@ -64,10 +64,10 @@ const reviews: Review[] = [
 
 export default function Reviews() {
   return (
-    <section id="reviews" className="bg-[#252525] py-24 md:py-32 overflow-hidden">
+    <section id="reviews" className="bg-[#252525] py-12 md:pt-12 md:pb-28 overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
-          className="mb-16 text-center"
+          className="mb-8 text-center md:mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

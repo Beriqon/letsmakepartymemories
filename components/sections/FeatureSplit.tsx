@@ -5,25 +5,26 @@ import { motion } from "framer-motion";
 
 const features = [
   {
-    image: "/images/lmpm-overons.jpg",
-    title: "✨Let's Make Party Memories ✨",
-    description: "Let's Make Party Memories is ontstaan uit een passie voor feesten en het vastleggen van mooie momenten. Wij, Peter & Lisa, geloven dat elk evenement uniek is en een persoonlijke touch verdient. Daarom streven wij ernaar om met onze photoboot een onvergetelijke ervaring te creëren voor jou en jouw gasten. Wij zijn gedreven door respect voor kwaliteit en een oprechte wens om verwachtingen te overtreffen. Klaar om jouw feest naar een hoger niveau te tillen?",
+    image: "/gallerij/wetranfer1.jpg",
+    title: "Dé eyecatcher voor elk feest!",
+    description:
+      "Onze mirror photobooth zorgt voor glamour, plezier en onvergetelijke herinneringen. Het is de perfecte toevoeging voor bedrijfsevents, bruiloften, jubilea, verjaardagen en meer. Laat jouw gasten foto's maken met onze luxe spiegel photobooth, met onbeperkt printen, rode loper, props en alles professioneel opgezet.",
     bullets: [],
   },
   {
-    image: "/images/callmemaybe-videoboek.avif",
-    title: "Dé eyecatcher voor elk feest!",
-    description: "Onze mirror photobooth zorgt voor glamour, plezier en onvergetelijke herinneringen. Het is de perfecte toevoeging voor bedrijfsevents, bruiloften, jubilea, verjaardagen en meer!",
-    description2: "Laat jouw gasten foto's maken met onze luxe spiegel photobooth. Onbeperkt printen, rode loper, props en alles professioneel opgezet.",
+    image: "/images/lmpm-overons.jpg",
+    title: "✨Over Let's Make Party Memories ✨",
+    description:
+      "Let's Make Party Memories is ontstaan uit een passie voor feesten en het vastleggen van mooie momenten. Wij, Peter & Lisa, geloven dat elk evenement uniek is en een persoonlijke touch verdient. Daarom streven wij ernaar om met onze photoboot een onvergetelijke ervaring te creëren voor jou en jouw gasten. Wij zijn gedreven door respect voor kwaliteit en een oprechte wens om verwachtingen te overtreffen. Klaar om jouw feest naar een hoger niveau te tillen?",
     bullets: [],
   },
 ];
 
 export default function FeatureSplit() {
   return (
-    <section id="what" className="bg-[#252525] py-24 md:py-32">
+    <section id="what" className="bg-[#252525] pt-10 pb-12 md:pt-14 md:pb-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="space-y-24 md:space-y-28">
+        <div className="space-y-12 md:space-y-28">
           {features.map((feature, index) => {
             const isEven = index % 2 === 0;
             
@@ -37,9 +38,9 @@ export default function FeatureSplit() {
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.7 }}
                 >
-                  <div className="grid items-start gap-10 lg:gap-14 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)]">
-                    {/* LEFT: IMAGE */}
-                    <div className="relative h-[380px] w-full overflow-hidden rounded-3xl bg-[#1c1c1c] shadow-[0_20px_50px_rgba(0,0,0,0.45)] ring-1 ring-[#C8A45B]/25 sm:h-[420px] lg:h-[440px]">
+                  <div className="grid items-start gap-5 md:gap-10 lg:gap-14 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)]">
+                    {/* IMAGE: links op lg; op mobiel onder de tekst (order) */}
+                    <div className="relative order-2 h-[380px] w-full overflow-hidden rounded-3xl bg-[#1c1c1c] shadow-[0_20px_50px_rgba(0,0,0,0.45)] ring-1 ring-[#C8A45B]/25 sm:h-[420px] lg:order-1 lg:h-[440px]">
                       <Image
                         src={feature.image}
                         alt={feature.title}
@@ -50,9 +51,9 @@ export default function FeatureSplit() {
                       />
                     </div>
 
-                    {/* RIGHT: TEXT */}
-                    <div>
-                      <h3 className="mb-4 whitespace-normal md:whitespace-nowrap text-2xl font-semibold text-[#C8A45B] sm:text-3xl md:text-4xl font-serif leading-tight">
+                    {/* TEKST: op mobiel eerst; op lg rechts van de foto */}
+                    <div className="order-1 lg:order-2">
+                      <h3 className="mb-4 text-3xl font-semibold text-[#C8A45B] md:text-4xl font-serif leading-tight">
                         {feature.title}
                       </h3>
                       <p className="mb-6 text-lg leading-relaxed text-[#F5F5F5]/80 md:text-xl">
@@ -82,20 +83,15 @@ export default function FeatureSplit() {
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.7 }}
                 >
-                  <div className="grid items-start gap-10 lg:gap-14 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]">
+                  <div className="grid items-start gap-5 md:gap-10 lg:gap-14 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]">
                     {/* LEFT: TEXT */}
-                    <div>
-                      <h3 className="mb-4 text-3xl font-semibold text-[#C8A45B] md:text-4xl font-serif leading-tight">
+                    <div className="feature-split-over-title-wrap min-w-0">
+                      <h3 className="feature-split-over-title mb-4 font-semibold text-[#C8A45B] font-serif">
                         {feature.title}
                       </h3>
-                      <p className="mb-6 text-lg leading-relaxed text-[#F5F5F5]/80 md:text-xl">
+                      <p className="mb-4 md:mb-6 text-lg leading-relaxed text-[#F5F5F5]/80 md:text-xl">
                         {feature.description}
                       </p>
-                      {(feature as any).description2 && (
-                        <p className="mb-6 text-lg leading-relaxed text-[#F5F5F5]/80 md:text-xl">
-                          {(feature as any).description2}
-                        </p>
-                      )}
                       <ul className="space-y-3">
                         {feature.bullets.map((bullet, bulletIndex) => (
                           <li key={bulletIndex} className="flex items-start gap-3 text-[#F5F5F5]">
@@ -109,7 +105,7 @@ export default function FeatureSplit() {
                     {/* RIGHT: IMAGE */}
                     <div className="relative h-[380px] w-full overflow-hidden rounded-3xl bg-[#1c1c1c] shadow-[0_20px_50px_rgba(0,0,0,0.45)] ring-1 ring-[#C8A45B]/25 sm:h-[420px] lg:h-[440px]">
                       <Image
-                        src="/gallerij/lmpm-gallerij.jpg"
+                        src={feature.image}
                         alt={feature.title}
                         fill
                         className="object-contain object-center"

@@ -30,10 +30,10 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen w-full overflow-hidden"
+      className="relative min-h-screen w-full"
     >
       {/* Background Video */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <video
           autoPlay
           loop
@@ -41,7 +41,7 @@ export default function Hero() {
           playsInline
           className="absolute inset-0 h-full w-full object-cover"
         >
-          <source src="/hero/WhatsApp%20Video%202026-03-23%20at%2010.10.01.mp4?v=20260323" type="video/mp4" />
+          <source src="/hero/20260321_003712.mp4?v=20260321" type="video/mp4" />
         </video>
         {/* Dark gradient overlay for readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#2B2B2B]/70 via-[#2B2B2B]/50 to-[#2B2B2B]/70" />
@@ -56,10 +56,10 @@ export default function Hero() {
             animate="visible"
           >
             <motion.h1
-              className="mb-6 whitespace-normal break-words text-4xl font-bold leading-tight tracking-tight text-white sm:whitespace-nowrap sm:text-5xl lg:text-6xl font-serif"
+              className="mb-6 whitespace-normal break-words text-4xl font-bold leading-tight tracking-tight text-white sm:whitespace-nowrap sm:text-5xl lg:text-6xl font-serif px-0.5"
               variants={itemVariants}
             >
-              Let's Make Party Memories
+              {`✨Let's Make Party Memories ✨`}
             </motion.h1>
 
             {/* CTAs */}
@@ -71,7 +71,7 @@ export default function Hero() {
                 href="#products"
                 className="cta-glass group inline-flex h-14 items-center justify-center rounded-full bg-white/10 backdrop-blur-sm px-8 text-base font-semibold text-white transition-all hover:bg-white/20 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-transparent border border-white/20"
               >
-                Ontdek jouw Mirrorbooth
+                Luxe Mirror Photobooth
               </Link>
               <Link
                 href="#contact"

@@ -6,11 +6,11 @@ import { MapPin, Sparkles, Palette, Download } from "lucide-react";
 const trustItems = [
   {
     icon: MapPin,
-    text: "Op locatie geleverd & opgezet",
+    text: "Haal- en brengservice inclusief op- en afbouw",
   },
   {
     icon: Sparkles,
-    text: "inclusief rode loper + luxe paaltjes",
+    text: "Inclusief rode loper + luxe paaltjes",
   },
   {
     icon: Palette,
@@ -18,7 +18,7 @@ const trustItems = [
   },
   {
     icon: Download,
-    text: "Alle foto's digitaal na afloop op aanvraag",
+    text: "Onbeperkt printen",
   },
 ];
 

@@ -48,15 +48,15 @@ export default function Hero() {
       </div>
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex min-h-screen flex-col items-center justify-center py-24 lg:py-32">
+        <div className="flex min-h-screen w-full flex-col items-center justify-center py-24 lg:py-32">
           <motion.div
-            className="relative z-10 w-full max-w-2xl text-center"
+            className="relative z-10 mx-auto flex w-full max-w-[min(100%,56rem)] flex-col items-center text-center"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
           >
             <motion.h1
-              className="mb-6 whitespace-normal break-words text-4xl font-bold leading-tight tracking-tight text-white sm:whitespace-nowrap sm:text-5xl lg:text-6xl font-serif px-0.5"
+              className="mb-6 w-fit whitespace-nowrap text-center text-2xl font-bold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl font-serif"
               variants={itemVariants}
             >
               {`✨Let's Make Party Memories ✨`}

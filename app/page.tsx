@@ -28,7 +28,7 @@ export default function Home() {
             <div className="mb-0 -mb-3 flex justify-center md:mb-0 md:block md:leading-normal leading-none">
               <Image
                 src="/logo/lmpm-logo-transparant-def.png"
-                alt="Let's Make Party Memories Logo"
+                alt="Logo van Let's Make Party Memories – photobooth en mirror booth huren"
                 width={240}
                 height={96}
                 className="block h-auto max-w-[240px] w-auto mx-auto md:mx-0 md:w-full -mt-10 md:-mt-16"

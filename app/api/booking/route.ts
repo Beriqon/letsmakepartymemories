@@ -1,22 +1,25 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(req: Request) {
   console.info("[api/booking] POST received");
 
-  if (!process.env.RESEND_API_KEY) {
-    console.error("[api/booking] Missing RESEND_API_KEY — set it in Vercel project env");
-    return NextResponse.json(
+  const apiKey = process.env.RESEND_API_KEY;
+
+  if (!apiKey) {
+    console.error("[api/booking] Missing RESEND_API_KEY");
+    return Response.json(
       {
-        error:
-          "E-mail is tijdelijk niet beschikbaar. Probeer het later opnieuw of neem contact op via WhatsApp.",
+        success: false,
+        message: "Serverconfiguratie ontbreekt.",
+        error: "Serverconfiguratie ontbreekt.",
         code: "MISSING_RESEND_KEY",
       },
       { status: 500 }
     );
   }
+
+  const resend = new Resend(apiKey);
 
   try {
     let body: Record<string, unknown>;

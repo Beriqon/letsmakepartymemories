@@ -41,7 +41,18 @@ export default function BookingForm() {
         body: JSON.stringify(formData),
       });
 
-      const data = await res.json();
+      let payload: {
+        error?: string;
+        detail?: string;
+        success?: boolean;
+        code?: string;
+      } = {};
+      try {
+        const text = await res.text();
+        if (text) payload = JSON.parse(text) as typeof payload;
+      } catch {
+        // non-JSON body (e.g. proxy error page)
+      }
 
       if (res.ok) {
         setSubmitted(true);
@@ -57,11 +68,24 @@ export default function BookingForm() {
         });
       } else {
         setSubmitted(false);
-        setStatusMessage(data.error || "Er ging iets mis.");
+        const showTechnicalDetail =
+          res.status >= 500 &&
+          Boolean(payload.detail) &&
+          payload.code !== "MISSING_RESEND_KEY";
+        const fallback =
+          res.status === 400
+            ? "Controleer het formulier en probeer opnieuw."
+            : "Er ging iets mis.";
+        const main = payload.error || fallback;
+        setStatusMessage(
+          showTechnicalDetail ? `${main} (${payload.detail})` : main
+        );
       }
-    } catch (error) {
+    } catch {
       setSubmitted(false);
-      setStatusMessage("Er ging iets mis bij het versturen.");
+      setStatusMessage(
+        "Geen verbinding met de server. Controleer je internet en probeer opnieuw."
+      );
     } finally {
       setLoading(false);
     }

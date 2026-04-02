@@ -4,8 +4,31 @@ import { NextResponse } from "next/server";
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
+  console.info("[api/booking] POST received");
+
+  if (!process.env.RESEND_API_KEY) {
+    console.error("[api/booking] Missing RESEND_API_KEY — set it in Vercel project env");
+    return NextResponse.json(
+      {
+        error:
+          "E-mail is tijdelijk niet beschikbaar. Probeer het later opnieuw of neem contact op via WhatsApp.",
+        code: "MISSING_RESEND_KEY",
+      },
+      { status: 500 }
+    );
+  }
+
   try {
-    const body = await req.json();
+    let body: Record<string, unknown>;
+    try {
+      body = await req.json();
+    } catch {
+      console.warn("[api/booking] Invalid JSON body");
+      return NextResponse.json(
+        { error: "Ongeldige aanvraag. Vernieuw de pagina en probeer opnieuw." },
+        { status: 400 }
+      );
+    }
 
     const {
       naam,
@@ -15,9 +38,18 @@ export async function POST(req: Request) {
       eindtijd,
       locatie,
       bericht,
-    } = body;
+    } = body as {
+      naam?: string;
+      email?: string;
+      datum?: string;
+      begintijd?: string;
+      eindtijd?: string;
+      locatie?: string;
+      bericht?: string;
+    };
 
     if (!naam || !email || !datum || !begintijd || !eindtijd || !locatie) {
+      console.warn("[api/booking] Validation failed: missing required fields");
       return NextResponse.json(
         { error: "Vul alle verplichte velden in." },
         { status: 400 }
@@ -25,7 +57,7 @@ export async function POST(req: Request) {
     }
 
     const { data, error } = await resend.emails.send({
-      from: "Letsmakeparty <onboarding@resend.dev>",
+      from: "Website <no-reply@letsmakepartymemories.nl>",
       to: ["info@letsmakepartymemories.nl"],
       subject: `Nieuwe photobooth aanvraag van ${naam}`,
       replyTo: email,
@@ -42,16 +74,23 @@ export async function POST(req: Request) {
     });
 
     if (error) {
-      console.error("Resend error:", error);
+      console.error("[api/booking] Resend API error:", JSON.stringify(error));
       return NextResponse.json(
-        { error: "Mail versturen mislukt." },
+        {
+          error: "Mail versturen mislukt.",
+          detail:
+            typeof error === "object" && error !== null && "message" in error
+              ? String((error as { message: unknown }).message)
+              : undefined,
+        },
         { status: 500 }
       );
     }
 
-    return NextResponse.json({ success: true, data });
+    console.info("[api/booking] Resend success, id:", data?.id ?? "(no id)");
+    return NextResponse.json({ success: true, id: data?.id });
   } catch (err) {
-    console.error("Route error:", err);
+    console.error("[api/booking] Unexpected error:", err);
     return NextResponse.json(
       { error: "Er ging iets mis bij het verwerken van het formulier." },
       { status: 500 }

@@ -60,7 +60,7 @@ export async function POST(req: Request) {
     }
 
     const { data, error } = await resend.emails.send({
-      from: "Website <no-reply@letsmakepartymemories.nl>",
+      from: "Website <no-reply@send.letsmakepartymemories.nl>",
       to: ["info@letsmakepartymemories.nl"],
       subject: `Nieuwe photobooth aanvraag van ${naam}`,
       replyTo: email,

@@ -56,7 +56,10 @@ const galleryImages: GalleryImage[] = [
 
 export default function VideoDemo() {
   return (
-    <section className="relative overflow-hidden bg-[#2A2A2A] pt-8 pb-12 md:pt-12 md:pb-28">
+    <section
+      id="galerij"
+      className="relative scroll-mt-24 overflow-hidden bg-[#2A2A2A] pt-8 pb-12 md:scroll-mt-28 md:pt-12 md:pb-28"
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="mx-auto max-w-7xl text-center mb-8 md:mb-16"
@@ -66,7 +69,7 @@ export default function VideoDemo() {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-4xl font-bold text-[#C8A45B] md:text-5xl lg:text-6xl font-serif leading-tight">
-            Zo ziet een evenement met onze photobooth{"\u00A0"}eruit
+            Galerij
           </h2>
         </motion.div>
 

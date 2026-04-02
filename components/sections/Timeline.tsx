@@ -39,7 +39,10 @@ const steps: TimelineStep[] = [
 
 export default function Timeline() {
   return (
-    <section id="how" className="bg-[#1A1A1A] pt-12 pb-16 md:pt-12 md:pb-28">
+    <section
+      id="how"
+      className="scroll-mt-24 bg-[#1A1A1A] pt-12 pb-16 md:scroll-mt-28 md:pt-12 md:pb-28"
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           className="mb-20 text-center"

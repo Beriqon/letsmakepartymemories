@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { Fragment, useState, useEffect } from "react";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -16,14 +16,25 @@ export default function Header() {
   }, []);
 
   const navLinks = [
-    { href: "#products", label: "Photobooth" },
+    { href: "#mirror-photobooth", label: "Onze photobooth" },
+    { href: "#over-ons", label: "Over ons" },
+    { href: "#products", label: "Tarieven" },
     { href: "#how", label: "Hoe het werkt" },
+    { href: "#galerij", label: "Galerij" },
     { href: "#reviews", label: "Reviews" },
-    { href: "#footer", label: "Contact" },
+    { href: "#footer-contact", label: "Contact" },
+  ];
+
+  /** Alleen hamburger (onder xl): Boeken naar #contact tussen Reviews en Contact */
+  const mobileNavLinks = [
+    ...navLinks.slice(0, -1),
+    { href: "#contact", label: "Boeken" },
+    ...navLinks.slice(-1),
   ];
 
   const handleLinkClick = () => {
-    setIsMobileMenuOpen(false);
+    // Sluit het menu net na de hash-scroll zodat de scrollpositie klopt op mobiel.
+    window.setTimeout(() => setIsMobileMenuOpen(false), 50);
   };
 
   return (
@@ -48,21 +59,28 @@ export default function Header() {
             </span>
           </a>
 
-          {/* Middle: Navigation Links (Desktop) */}
-          <div className="hidden items-center gap-8 md:flex">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-[#F5F5F5] transition-colors hover:text-[#C8A45B] font-medium"
-              >
-                {link.label}
-              </a>
+          {/* Middle: Navigation Links (wide screens — veel items) */}
+          <div className="hidden max-w-[min(100%,56rem)] flex-1 flex-wrap items-center justify-center gap-y-2 px-2 text-sm xl:flex 2xl:text-base">
+            {navLinks.map((link, i) => (
+              <Fragment key={link.href}>
+                {i > 0 ? (
+                  <span
+                    className="mx-1.5 h-3.5 w-px shrink-0 bg-gradient-to-b from-transparent via-[#C8A45B]/45 to-transparent 2xl:mx-2.5"
+                    aria-hidden
+                  />
+                ) : null}
+                <a
+                  href={link.href}
+                  className="shrink-0 px-0.5 text-center text-[#F5F5F5] font-medium transition-colors hover:text-[#C8A45B]"
+                >
+                  {link.label}
+                </a>
+              </Fragment>
             ))}
           </div>
 
           {/* Right: Primary Button (Desktop) */}
-          <div className="hidden md:block">
+          <div className="hidden shrink-0 md:block">
             <a
               href="#contact"
               className="cta-gold group inline-flex h-12 items-center justify-center rounded-full bg-[#C8A45B] px-8 text-base font-semibold text-[#0B0B0B] shadow-md transition-all hover:bg-[#C8A45B] hover:shadow-xl hover:scale-105 active:scale-100 focus:outline-none focus:ring-2 focus:ring-[#C8A45B]/50 focus:ring-offset-2 focus:ring-offset-[#111111]"
@@ -71,10 +89,10 @@ export default function Header() {
             </a>
           </div>
 
-          {/* Mobile: Hamburger Button */}
+          {/* Tablet / mobiel: hamburger (volledige menu met alle items) */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="flex flex-col gap-1.5 p-2 md:hidden"
+            className="flex flex-col gap-1.5 p-2 xl:hidden"
             aria-label="Toggle menu"
           >
             <span
@@ -95,22 +113,29 @@ export default function Header() {
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Uitklapmenu: desktop-links + extra Boeken (alleen hier) */}
         <div
-          className={`md:hidden overflow-hidden transition-all duration-300 ${
-            isMobileMenuOpen ? "max-h-96 pb-4" : "max-h-0"
+          className={`xl:hidden overflow-hidden transition-all duration-300 ${
+            isMobileMenuOpen ? "max-h-[min(85vh,30rem)] overflow-y-auto pb-4" : "max-h-0"
           } bg-[#111111]/80 backdrop-blur-xl border-t border-[#C8A45B]/20`}
         >
-          <div className="flex flex-col gap-3 pt-4">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={handleLinkClick}
-                className="rounded-lg px-2 py-3 text-[#F5F5F5] transition-colors hover:text-[#C8A45B] font-medium"
-              >
-                {link.label}
-              </a>
+          <div className="flex flex-col pt-1">
+            {mobileNavLinks.map((link, i) => (
+              <Fragment key={`${link.href}-${link.label}`}>
+                {i > 0 ? (
+                  <div
+                    className="mx-1.5 h-px shrink-0 bg-gradient-to-r from-transparent via-[#C8A45B]/25 to-transparent"
+                    aria-hidden
+                  />
+                ) : null}
+                <a
+                  href={link.href}
+                  onClick={handleLinkClick}
+                  className="rounded-lg px-2 py-3 text-[#F5F5F5] font-medium transition-colors hover:text-[#C8A45B]"
+                >
+                  {link.label}
+                </a>
+              </Fragment>
             ))}
           </div>
         </div>

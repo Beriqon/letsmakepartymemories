@@ -19,7 +19,7 @@ type FeatureBlock = {
 
 const features: FeatureBlock[] = [
   {
-    videoSrc: "/images/lv_0_20260311152402.mp4",
+    videoSrc: "/images/lv_0_wetransfervid.mp4",
     title: "Onze luxe mirror photobooth",
     alt: "Interactieve mirror photobooth als blikvanger op een bedrijfsfeest of bruiloft",
     paragraphs: [
@@ -50,7 +50,7 @@ const features: FeatureBlock[] = [
 
 export default function FeatureSplit() {
   return (
-    <section id="what" className="bg-[#252525] pt-10 pb-12 md:pt-14 md:pb-24">
+    <section className="bg-[#252525] pt-10 pb-12 md:pt-14 md:pb-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="space-y-12 md:space-y-28">
           {features.map((feature, index) => {
@@ -61,6 +61,8 @@ export default function FeatureSplit() {
               return (
                 <motion.div
                   key={index}
+                  id="mirror-photobooth"
+                  className="scroll-mt-24 md:scroll-mt-28"
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
@@ -98,19 +100,42 @@ export default function FeatureSplit() {
                         {feature.title}
                       </h3>
                       {"paragraphs" in feature && feature.paragraphs ? (
-                        <div className="mb-6 space-y-4 text-lg leading-relaxed text-[#F5F5F5]/80 md:text-xl">
-                          {feature.paragraphs.map((para, pi) => (
-                            <p key={pi}>{para}</p>
-                          ))}
-                          {"closingEmphasis" in feature &&
-                            feature.closingEmphasis && (
-                              <p>
-                                {feature.closingEmphasis.before}
-                                <em className="whitespace-nowrap italic text-[#F5F5F5]/90">
-                                  {feature.closingEmphasis.italic}
-                                </em>
-                              </p>
-                            )}
+                        <div className="mb-6 text-lg leading-relaxed text-[#F5F5F5]/80 md:text-xl">
+                          {index === 0 &&
+                          feature.paragraphs.length >= 3 &&
+                          "closingEmphasis" in feature &&
+                          feature.closingEmphasis ? (
+                            <div className="flex flex-col gap-4">
+                              <div className="flex flex-col gap-0">
+                                <p>{feature.paragraphs[0]}</p>
+                                <p>{feature.paragraphs[1]}</p>
+                              </div>
+                              <div className="flex flex-col gap-0">
+                                <p>{feature.paragraphs[2]}</p>
+                                <p>
+                                  {feature.closingEmphasis.before}
+                                  <em className="whitespace-nowrap italic text-[#F5F5F5]/90">
+                                    {feature.closingEmphasis.italic}
+                                  </em>
+                                </p>
+                              </div>
+                            </div>
+                          ) : (
+                            <div className="space-y-4">
+                              {feature.paragraphs.map((para, pi) => (
+                                <p key={pi}>{para}</p>
+                              ))}
+                              {"closingEmphasis" in feature &&
+                                feature.closingEmphasis && (
+                                  <p>
+                                    {feature.closingEmphasis.before}
+                                    <em className="whitespace-nowrap italic text-[#F5F5F5]/90">
+                                      {feature.closingEmphasis.italic}
+                                    </em>
+                                  </p>
+                                )}
+                            </div>
+                          )}
                         </div>
                       ) : feature.description ? (
                         <p className="mb-6 text-lg leading-relaxed text-[#F5F5F5]/80 md:text-xl">
@@ -136,6 +161,8 @@ export default function FeatureSplit() {
               return (
                 <motion.div
                   key={index}
+                  id="over-ons"
+                  className="scroll-mt-24 md:scroll-mt-28"
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
@@ -148,14 +175,33 @@ export default function FeatureSplit() {
                         {feature.title}
                       </h3>
                       {"paragraphs" in feature && feature.paragraphs ? (
-                        <div className="mb-6 space-y-4 text-lg leading-relaxed text-[#F5F5F5]/80 md:text-xl">
-                          {feature.paragraphs.map((para, pi) => (
-                            <p key={pi}>{para}</p>
-                          ))}
-                          {"closingBold" in feature && feature.closingBold && (
-                            <p className="font-bold text-[#F5F5F5]">
-                              {feature.closingBold}
-                            </p>
+                        <div className="mb-6 text-lg leading-relaxed text-[#F5F5F5]/80 md:text-xl">
+                          {"closingBold" in feature &&
+                          feature.closingBold &&
+                          feature.paragraphs.length > 0 ? (
+                            <div className="space-y-4">
+                              {feature.paragraphs.slice(0, -1).map((para, pi) => (
+                                <p key={pi}>{para}</p>
+                              ))}
+                              <div className="flex flex-col gap-0">
+                                <p>
+                                  {
+                                    feature.paragraphs[
+                                      feature.paragraphs.length - 1
+                                    ]
+                                  }
+                                </p>
+                                <p className="font-bold text-[#F5F5F5]">
+                                  {feature.closingBold}
+                                </p>
+                              </div>
+                            </div>
+                          ) : (
+                            <div className="space-y-4">
+                              {feature.paragraphs.map((para, pi) => (
+                                <p key={pi}>{para}</p>
+                              ))}
+                            </div>
                           )}
                         </div>
                       ) : feature.description ? (

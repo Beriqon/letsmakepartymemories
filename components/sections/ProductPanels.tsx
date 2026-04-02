@@ -1,18 +1,34 @@
 "use client";
 
+import { useLayoutEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
 export default function ProductPanels() {
+  const [isPhone, setIsPhone] = useState(false);
+
+  useLayoutEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const sync = () => setIsPhone(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+
   return (
-    <section id="products" className="bg-[#1F1F1F] pt-12 pb-12 md:pt-12 md:pb-28">
+    <section
+      id="products"
+      className="scroll-mt-24 bg-[#1F1F1F] pt-12 pb-6 md:scroll-mt-28 md:pb-28 md:pt-12"
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
-          className="mb-14 text-center md:mb-18 lg:mb-20"
-          initial={{ opacity: 0, y: 30 }}
+          className="mb-8 text-center md:mb-18 lg:mb-20"
+          initial={
+            isPhone ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
+          }
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: isPhone ? 0 : 0.6 }}
         >
           <h2 className="text-4xl font-bold text-[#C8A45B] md:text-5xl lg:text-6xl font-serif leading-tight">
             Tarieven
@@ -21,11 +37,17 @@ export default function ProductPanels() {
 
         <div className="max-w-6xl mx-auto">
           <motion.div
+            key={isPhone ? "tarieven-card-phone" : "tarieven-card-desktop"}
             className="group relative rounded-[28px] bg-[#111111] p-6 shadow-[0_18px_60px_rgba(0,0,0,0.55)] border border-[#C8A45B]/25 ring-1 ring-white/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_22px_80px_rgba(0,0,0,0.65)] hover:border-[#C8A45B]/40 md:p-9 lg:p-12"
-            initial={{ opacity: 0, y: 50 }}
+            initial={
+              isPhone ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
+            }
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.7 }}
+            viewport={{
+              once: true,
+              margin: isPhone ? "0px" : "-100px",
+            }}
+            transition={{ duration: isPhone ? 0 : 0.7 }}
           >
             <div className="pointer-events-none absolute inset-0 rounded-[28px] opacity-0 transition-opacity duration-300 group-hover:opacity-100 bg-[radial-gradient(900px_circle_at_50%_0%,rgba(200,164,91,0.10),transparent_55%)]" />
 
@@ -74,7 +96,7 @@ export default function ProductPanels() {
                         />
                       </svg>
                       <span className="text-sm text-[#F5F5F5]/90 md:text-base leading-relaxed">
-                        {`Onbeperkt printen én digitale foto's`}
+                        Onbeperkt printen en digitale foto&apos;s
                       </span>
                     </li>
                     <li className="flex items-start gap-3.5">
@@ -92,7 +114,7 @@ export default function ProductPanels() {
                         />
                       </svg>
                       <span className="text-sm text-[#F5F5F5]/90 md:text-base leading-relaxed">
-                        Rode loper + luxe afzetpaaltjes
+                        Rode loper met luxe afzetpaaljes
                       </span>
                     </li>
                     <li className="flex items-start gap-3.5">
@@ -110,7 +132,7 @@ export default function ProductPanels() {
                         />
                       </svg>
                       <span className="text-sm text-[#F5F5F5]/90 md:text-base leading-relaxed">
-                        Verschillende props (hoedjes, zonnebrillen etc.)
+                        Stijlvolle props (hoedjes, brillen etc.)
                       </span>
                     </li>
                     <li className="flex items-start gap-3.5">
@@ -128,7 +150,7 @@ export default function ProductPanels() {
                         />
                       </svg>
                       <span className="text-sm text-[#F5F5F5]/90 md:text-base leading-relaxed">
-                        Keuze uit stijlvolle achtergronden
+                        Verschillende achtergronden
                       </span>
                     </li>
                   </ul>
@@ -303,7 +325,7 @@ export default function ProductPanels() {
               </div>
             </div>
 
-            <div className="mt-10 border-t border-[#C8A45B]/15 pt-10 md:mt-12 md:pt-12">
+            <div className="mt-6 border-t border-[#C8A45B]/15 pt-6 md:mt-12 md:pt-12">
               <Link
                 href="#contact"
                 className="cta-gold relative inline-flex h-16 w-full items-center justify-center rounded-2xl bg-[#C8A45B] px-10 text-base md:text-[17px] font-semibold text-[#0B0B0B] shadow-[0_18px_40px_rgba(200,164,91,0.16)] transition-all duration-300 hover:bg-[#C8A45B] hover:-translate-y-0.5 hover:shadow-[0_22px_58px_rgba(200,164,91,0.22)] active:translate-y-0 active:shadow-[0_16px_34px_rgba(200,164,91,0.14)] focus:outline-none focus:ring-2 focus:ring-[#C8A45B]/55 focus:ring-offset-2 focus:ring-offset-[#111111]"

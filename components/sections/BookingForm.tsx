@@ -68,7 +68,10 @@ export default function BookingForm() {
   };
 
   return (
-    <section id="contact" className="bg-[#2A2A2A] pt-12 pb-14 md:pt-12 md:pb-28">
+    <section
+      id="contact"
+      className="scroll-mt-24 bg-[#2A2A2A] pt-12 pb-14 md:scroll-mt-28 md:pt-12 md:pb-28"
+    >
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <motion.div
           className="mb-12 text-center"

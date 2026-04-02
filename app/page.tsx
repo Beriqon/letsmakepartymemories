@@ -21,7 +21,7 @@ export default function Home() {
       <Reviews />
       <BookingForm />
 
-      <footer id="footer" className="border-t border-[#C8A45B]/30 bg-[#111111] py-7 md:py-14">
+      <footer className="border-t border-[#C8A45B]/30 bg-[#111111] py-7 md:py-14">
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid grid-cols-1 gap-0 md:gap-10 md:grid-cols-2 lg:grid-cols-3 mb-6 md:mb-8">
             {/* Kolom 1: Logo — op mobiel strakker tot Navigatie; grid-gap weer vol voor Nav↔Contact via mb op nav-blok */}
@@ -40,16 +40,34 @@ export default function Home() {
               <h4 className="mb-3 md:mb-4 text-base font-semibold text-[#F5F5F5] font-serif">Navigatie</h4>
               <nav className="flex flex-col gap-3">
                 <a
+                  href="#mirror-photobooth"
+                  className="text-sm text-[#F5F5F5]/70 transition-all hover:text-[#F5F5F5] hover:underline underline-offset-2"
+                >
+                  Onze photobooth
+                </a>
+                <a
+                  href="#over-ons"
+                  className="text-sm text-[#F5F5F5]/70 transition-all hover:text-[#F5F5F5] hover:underline underline-offset-2"
+                >
+                  Over ons
+                </a>
+                <a
                   href="#products"
                   className="text-sm text-[#F5F5F5]/70 transition-all hover:text-[#F5F5F5] hover:underline underline-offset-2"
                 >
-                  Luxe mirror photobooth
+                  Tarieven
                 </a>
                 <a
                   href="#how"
                   className="text-sm text-[#F5F5F5]/70 transition-all hover:text-[#F5F5F5] hover:underline underline-offset-2"
                 >
                   Hoe het werkt
+                </a>
+                <a
+                  href="#galerij"
+                  className="text-sm text-[#F5F5F5]/70 transition-all hover:text-[#F5F5F5] hover:underline underline-offset-2"
+                >
+                  Galerij
                 </a>
                 <a
                   href="#reviews"
@@ -60,8 +78,11 @@ export default function Home() {
               </nav>
             </div>
 
-            {/* Kolom 3: Contact */}
-            <div>
+            {/* Kolom 3: Contact — anker voor menu (mobiel: direct bij kop) */}
+            <div
+              id="footer-contact"
+              className="scroll-mt-28 md:scroll-mt-28"
+            >
               <h4 className="mb-4 text-base font-semibold text-[#F5F5F5] font-serif">Contact</h4>
               <div className="flex flex-col gap-3 mb-4">
                 <a
@@ -102,7 +123,7 @@ export default function Home() {
                   </svg>
                 </a>
                 <a
-                  href="https://www.facebook.com/letsmakepartymemories"
+                  href="https://www.facebook.com/people/Lets-Make-Party-Memories/61585573484202/#"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[#F5F5F5]/70 hover:text-[#1877F2] transition-colors"

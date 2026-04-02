@@ -10,7 +10,7 @@ const trustItems = [
   },
   {
     icon: Sparkles,
-    text: "Inclusief rode loper met luxe afzetpaaltjes",
+    text: "Inclusief rode loper met luxe afzetpaaljes",
   },
   {
     icon: Palette,
@@ -18,7 +18,7 @@ const trustItems = [
   },
   {
     icon: Download,
-    text: "Onbeperkt printen én digitale foto's",
+    text: "Onbeperkt printen en digitale foto's",
   },
 ];
 

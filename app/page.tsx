@@ -1,3 +1,4 @@
+import { getWhatsAppHref } from "@/lib/whatsapp";
 import Hero from "@/components/sections/Hero";
 import TrustBar from "@/components/sections/TrustBar";
 import FeatureSplit from "@/components/sections/FeatureSplit";
@@ -112,7 +113,7 @@ export default function Home() {
                   </svg>
                 </a>
                 <a
-                  href="https://wa.me/31641081087"
+                  href={getWhatsAppHref()}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[#F5F5F5]/70 hover:text-[#25D366] transition-colors"

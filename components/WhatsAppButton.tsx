@@ -1,8 +1,9 @@
 "use client";
 
+import { getWhatsAppHref } from "@/lib/whatsapp";
+
 export default function WhatsAppButton() {
-  const phoneNumber = "31641081087"; // 0641081087 without leading 0, with country code
-  const whatsappUrl = `https://wa.me/${phoneNumber}`;
+  const whatsappUrl = getWhatsAppHref();
 
   return (
     <a

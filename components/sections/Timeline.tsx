@@ -1,12 +1,22 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 
-const steps = [
+type TimelineStep = {
+  number: string;
+  title: string;
+  description: string;
+  cta?: { href: string; label: string };
+};
+
+const steps: TimelineStep[] = [
   {
     number: "01",
-    title: "Datum reserveren",
-    description: "Neem contact op via WhatsApp of het formulier om de datum en het tijdstip te reserveren.",
+    title: "Photobooth reserveren",
+    description:
+      "Neem contact op via de WhatsApp-knop rechtsonder of vul het formulier in via de boekingsknop hieronder om jouw photobooth te boeken.",
+    cta: { href: "#contact", label: "Boek jouw photobooth" },
   },
   {
     number: "02",
@@ -16,7 +26,8 @@ const steps = [
   {
     number: "03",
     title: "Design persoonlijke fotostrip",
-    description: "Uw persoonlijke fotostrip wordt ontworpen en per mail gestuurd zodat u deze kunt controleren.",
+    description:
+      "Uw persoonlijke fotostrip wordt door Lisa ontworpen en per mail verstuurd zodat u kunt controleren of deze naar wens is.",
   },
   {
     number: "04",
@@ -38,7 +49,7 @@ export default function Timeline() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="mb-6 text-4xl font-bold text-[#C8A45B] md:text-5xl lg:text-6xl font-serif leading-tight">
-            Hoe werkt het?
+            Hoe het werkt
           </h2>
         </motion.div>
 
@@ -71,6 +82,16 @@ export default function Timeline() {
                   <p className="text-center leading-relaxed text-[#F5F5F5]/80">
                     {step.description}
                   </p>
+                  {step.cta && (
+                    <div className="mt-4 flex justify-center">
+                      <Link
+                        href={step.cta.href}
+                        className="cta-gold inline-flex h-12 max-w-full items-center justify-center rounded-full bg-[#C8A45B] px-5 text-sm font-semibold text-[#0B0B0B] shadow-lg transition-all hover:bg-[#C8A45B] hover:shadow-xl hover:scale-105 active:scale-100 focus:outline-none focus:ring-2 focus:ring-[#C8A45B]/50 focus:ring-offset-2 focus:ring-offset-[#1A1A1A] sm:px-6 sm:text-base"
+                      >
+                        {step.cta.label}
+                      </Link>
+                    </div>
+                  )}
                 </motion.div>
               ))}
             </div>
@@ -104,6 +125,14 @@ export default function Timeline() {
                   <p className="leading-relaxed text-[#F5F5F5]/80">
                     {step.description}
                   </p>
+                  {step.cta && (
+                    <Link
+                      href={step.cta.href}
+                      className="cta-gold mt-4 inline-flex h-12 w-full max-w-xs items-center justify-center rounded-full bg-[#C8A45B] px-5 text-sm font-semibold text-[#0B0B0B] shadow-lg transition-all hover:bg-[#C8A45B] hover:shadow-xl hover:scale-105 active:scale-100 focus:outline-none focus:ring-2 focus:ring-[#C8A45B]/50 focus:ring-offset-2 focus:ring-offset-[#1A1A1A] sm:text-base"
+                    >
+                      {step.cta.label}
+                    </Link>
+                  )}
                 </motion.div>
               ))}
             </div>

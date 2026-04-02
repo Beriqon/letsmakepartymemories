@@ -30,21 +30,6 @@ export default function ProductPanels() {
             <div className="pointer-events-none absolute inset-0 rounded-[28px] opacity-0 transition-opacity duration-300 group-hover:opacity-100 bg-[radial-gradient(900px_circle_at_50%_0%,rgba(200,164,91,0.10),transparent_55%)]" />
 
             <div className="relative">
-              <h3 className="mb-5 text-3xl font-bold text-[#C8A45B] md:text-4xl lg:text-[42px] font-serif leading-tight tracking-tight">
-                Huur een luxe mirror photobooth
-              </h3>
-
-              <div>
-                <div className="text-6xl font-bold text-[#F5F5F5] md:text-7xl lg:text-8xl font-serif tracking-tight leading-none drop-shadow-[0_6px_22px_rgba(200,164,91,0.20)]">
-                  €345
-                </div>
-                <div className="text-sm text-[#F5F5F5]/70 mt-2">
-                  excl. btw
-                </div>
-              </div>
-            </div>
-
-            <div className="relative mt-10 border-t border-[#C8A45B]/15 pt-10 md:mt-12 md:pt-12">
               <h3 className="mb-5 text-3xl font-bold text-[#C8A45B] md:text-4xl font-serif tracking-tight">
                 Wat is inbegrepen
               </h3>
@@ -53,7 +38,7 @@ export default function ProductPanels() {
                 {/* Photobooth Group */}
                 <div className="h-full rounded-2xl border border-[#C8A45B]/15 bg-[#0B0B0B]/35 px-4 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
                   <h4 className="mb-3 text-lg md:text-xl font-semibold text-[#F5F5F5] font-serif">
-                    Luxe Mirror Photobooth
+                    De luxe mirror photobooth
                   </h4>
                   <ul className="space-y-2.5">
                     <li className="flex items-start gap-3.5">
@@ -89,7 +74,7 @@ export default function ProductPanels() {
                         />
                       </svg>
                       <span className="text-sm text-[#F5F5F5]/90 md:text-base leading-relaxed">
-                        Onbeperkt printen
+                        {`Onbeperkt printen én digitale foto's`}
                       </span>
                     </li>
                     <li className="flex items-start gap-3.5">
@@ -302,15 +287,29 @@ export default function ProductPanels() {
                   </ul>
                 </div>
               </div>
+            </div>
 
-              <div className="mt-10 border-t border-[#C8A45B]/15 pt-10 md:mt-12 md:pt-12">
-                <Link
-                  href="#contact"
-                  className="cta-gold relative inline-flex h-16 w-full items-center justify-center rounded-2xl bg-[#C8A45B] px-10 text-base md:text-[17px] font-semibold text-[#0B0B0B] shadow-[0_18px_40px_rgba(200,164,91,0.16)] transition-all duration-300 hover:bg-[#C8A45B] hover:-translate-y-0.5 hover:shadow-[0_22px_58px_rgba(200,164,91,0.22)] active:translate-y-0 active:shadow-[0_16px_34px_rgba(200,164,91,0.14)] focus:outline-none focus:ring-2 focus:ring-[#C8A45B]/55 focus:ring-offset-2 focus:ring-offset-[#111111]"
-                >
-                  Controleer beschikbaarheid
-                </Link>
+            <div className="relative mt-10 border-t border-[#C8A45B]/15 pt-10 md:mt-12 md:pt-12">
+              <h3 className="mb-5 text-3xl font-bold text-[#C8A45B] md:text-4xl lg:text-[42px] font-serif leading-tight tracking-tight">
+                Prijs
+              </h3>
+              <div>
+                <div className="text-6xl font-bold text-[#F5F5F5] md:text-7xl lg:text-8xl font-serif tracking-tight leading-none drop-shadow-[0_6px_22px_rgba(200,164,91,0.20)]">
+                  €345
+                </div>
+                <div className="text-sm text-[#F5F5F5]/70 mt-2">
+                  excl. btw
+                </div>
               </div>
+            </div>
+
+            <div className="mt-10 border-t border-[#C8A45B]/15 pt-10 md:mt-12 md:pt-12">
+              <Link
+                href="#contact"
+                className="cta-gold relative inline-flex h-16 w-full items-center justify-center rounded-2xl bg-[#C8A45B] px-10 text-base md:text-[17px] font-semibold text-[#0B0B0B] shadow-[0_18px_40px_rgba(200,164,91,0.16)] transition-all duration-300 hover:bg-[#C8A45B] hover:-translate-y-0.5 hover:shadow-[0_22px_58px_rgba(200,164,91,0.22)] active:translate-y-0 active:shadow-[0_16px_34px_rgba(200,164,91,0.14)] focus:outline-none focus:ring-2 focus:ring-[#C8A45B]/55 focus:ring-offset-2 focus:ring-offset-[#111111]"
+              >
+                  Boek jouw photobooth
+              </Link>
             </div>
           </motion.div>
         </div>

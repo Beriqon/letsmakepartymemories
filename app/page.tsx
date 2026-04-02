@@ -15,13 +15,13 @@ export default function Home() {
       <Hero />
       <TrustBar />
       <FeatureSplit />
+      <ProductPanels />
       <Timeline />
       <VideoDemo />
-      <ProductPanels />
       <Reviews />
       <BookingForm />
 
-      <footer className="border-t border-[#C8A45B]/30 bg-[#111111] py-7 md:py-14">
+      <footer id="footer" className="border-t border-[#C8A45B]/30 bg-[#111111] py-7 md:py-14">
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid grid-cols-1 gap-0 md:gap-10 md:grid-cols-2 lg:grid-cols-3 mb-6 md:mb-8">
             {/* Kolom 1: Logo — op mobiel strakker tot Navigatie; grid-gap weer vol voor Nav↔Contact via mb op nav-blok */}
@@ -40,16 +40,16 @@ export default function Home() {
               <h4 className="mb-3 md:mb-4 text-base font-semibold text-[#F5F5F5] font-serif">Navigatie</h4>
               <nav className="flex flex-col gap-3">
                 <a
-                  href="#how"
-                  className="text-sm text-[#F5F5F5]/70 transition-all hover:text-[#F5F5F5] hover:underline underline-offset-2"
-                >
-                  Hoe het werkt
-                </a>
-                <a
                   href="#products"
                   className="text-sm text-[#F5F5F5]/70 transition-all hover:text-[#F5F5F5] hover:underline underline-offset-2"
                 >
                   Luxe mirror photobooth
+                </a>
+                <a
+                  href="#how"
+                  className="text-sm text-[#F5F5F5]/70 transition-all hover:text-[#F5F5F5] hover:underline underline-offset-2"
+                >
+                  Hoe het werkt
                 </a>
                 <a
                   href="#reviews"

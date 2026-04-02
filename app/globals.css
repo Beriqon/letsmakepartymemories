@@ -34,19 +34,6 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-playfair), Georgia, 'Times New Roman', serif;
 }
 
-/* FeatureSplit "Over ons": titel op 1 regel binnen de tekstkolom (schaalt mee; geen overlap met foto) */
-.feature-split-over-title-wrap {
-  container-type: inline-size;
-  width: 100%;
-}
-
-.feature-split-over-title {
-  white-space: nowrap;
-  max-width: 100%;
-  font-size: clamp(0.7rem, 5.1cqi, 2.25rem);
-  line-height: 1.2;
-}
-
 a {
   color: var(--text);
   text-decoration: none;

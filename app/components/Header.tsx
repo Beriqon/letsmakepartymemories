@@ -16,9 +16,10 @@ export default function Header() {
   }, []);
 
   const navLinks = [
-    { href: "#how", label: "Hoe het werkt" },
     { href: "#products", label: "Photobooth" },
+    { href: "#how", label: "Hoe het werkt" },
     { href: "#reviews", label: "Reviews" },
+    { href: "#footer", label: "Contact" },
   ];
 
   const handleLinkClick = () => {

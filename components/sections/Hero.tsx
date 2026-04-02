@@ -56,28 +56,28 @@ export default function Hero() {
             animate="visible"
           >
             <motion.h1
-              className="mb-6 w-fit whitespace-nowrap text-center text-2xl font-bold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl font-serif"
+              className="mb-3 text-center text-2xl font-bold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl font-serif"
               variants={itemVariants}
             >
-              {`✨Let's Make Party Memories ✨`}
+              {"Let's Make Party Memories"}
             </motion.h1>
 
-            {/* CTAs */}
-            <motion.div
-              className="mb-12 flex flex-col gap-5 sm:flex-row sm:justify-center"
+            <motion.p
+              className="mb-10 max-w-xl text-center text-base font-medium tracking-wide text-white/90 sm:text-lg md:mb-12 [text-shadow:0_1px_12px_rgba(0,0,0,0.45)]"
               variants={itemVariants}
             >
-              <Link
-                href="#products"
-                className="cta-glass group inline-flex h-14 items-center justify-center rounded-full bg-white/10 backdrop-blur-sm px-8 text-base font-semibold text-white transition-all hover:bg-white/20 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-transparent border border-white/20"
-              >
-                Luxe Mirror Photobooth
-              </Link>
+              Luxe mirror photobooth verhuur
+            </motion.p>
+
+            <motion.div
+              className="mb-12 flex justify-center"
+              variants={itemVariants}
+            >
               <Link
                 href="#contact"
                 className="cta-gold group inline-flex h-14 items-center justify-center rounded-full bg-[#C8A45B] px-8 text-base font-semibold text-[#0B0B0B] shadow-lg transition-all hover:bg-[#C8A45B] hover:shadow-xl hover:scale-105 active:scale-100 focus:outline-none focus:ring-2 focus:ring-[#C8A45B]/50 focus:ring-offset-2"
               >
-                Boek jouw datum
+                Boek jouw photobooth
               </Link>
             </motion.div>
 

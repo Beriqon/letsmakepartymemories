@@ -6,19 +6,19 @@ import { MapPin, Sparkles, Palette, Download } from "lucide-react";
 const trustItems = [
   {
     icon: MapPin,
-    text: "Haal- en brengservice inclusief op- en afbouw",
+    text: "Haal- en brengservice en professionele setup door heel Nederland",
   },
   {
     icon: Sparkles,
-    text: "Inclusief rode loper + luxe paaltjes",
+    text: "Inclusief rode loper met luxe afzetpaaltjes",
   },
   {
     icon: Palette,
-    text: "Inclusief verschillende props en backdrops",
+    text: "Inclusief stijlvolle props en achtergronden",
   },
   {
     icon: Download,
-    text: "Onbeperkt printen",
+    text: "Onbeperkt printen én digitale foto's",
   },
 ];
 

@@ -1,23 +1,49 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 
-const features = [
+type FeatureBlock = {
+  image?: string;
+  videoSrc?: string;
+  title: string;
+  alt: string;
+  bullets: string[];
+  paragraphs?: string[];
+  closingEmphasis?: { before: string; italic: string };
+  closingBold?: string;
+  cta?: { href: string; label: string };
+  description?: string;
+};
+
+const features: FeatureBlock[] = [
   {
-    image: "/gallerij/wetranfer1.jpg",
-    title: "Dé eyecatcher voor elk feest!",
+    videoSrc: "/images/lv_0_20260311152402.mp4",
+    title: "Onze luxe mirror photobooth",
     alt: "Interactieve mirror photobooth als blikvanger op een bedrijfsfeest of bruiloft",
-    description:
-      "Onze mirror photobooth zorgt voor glamour, plezier en onvergetelijke herinneringen. Het is de perfecte toevoeging voor bedrijfsevents, bruiloften, jubilea, verjaardagen en meer. Laat jouw gasten foto's maken met onze luxe spiegel photobooth, met onbeperkt printen, rode loper, props en alles professioneel opgezet.",
+    paragraphs: [
+      "Dé eyecatcher voor elk feest!",
+      "Onze luxe spiegel photobooth zorgt voor glamour, plezier en onvergetelijke herinneringen. Perfect voor bruiloften, bedrijfsfeesten, verjaardagen en jubilea.",
+      "Laat jouw gasten lachen, poseren en hun foto's direct meenemen naar huis. Inclusief onbeperkt printen, stijlvolle props, rode loper en professionele setup.",
+    ],
+    closingEmphasis: {
+      before: "Maak jullie herinneringen voor altijd tastbaar: ",
+      italic: "Let's Make Party Memories!",
+    },
     bullets: [],
   },
   {
     image: "/images/lmpm-overons.jpg",
-    title: "✨Over Let's Make Party Memories ✨",
+    title: "Over ons",
     alt: "Team achter Let's Make Party Memories bij de luxe mirror photobooth voor feesten",
-    description:
-      "Let's Make Party Memories is ontstaan uit een passie voor feesten en het vastleggen van mooie momenten. Wij, Peter & Lisa, geloven dat elk evenement uniek is en een persoonlijke touch verdient. Daarom streven wij ernaar om met onze photoboot een onvergetelijke ervaring te creëren voor jou en jouw gasten. Wij zijn gedreven door respect voor kwaliteit en een oprechte wens om verwachtingen te overtreffen. Klaar om jouw feest naar een hoger niveau te tillen?",
+    paragraphs: [
+      "Let's Make Party Memories is ontstaan vanuit een passie voor feesten en het vastleggen van bijzondere momenten.",
+      "Wij, Peter & Lisa, geloven dat elk evenement uniek is en een persoonlijke touch verdient. Daarom streven wij ernaar om met onze luxe photobooth een onvergetelijke ervaring te creëren voor jou en jouw gasten.",
+      "Kwaliteit, service en een zorgeloze ervaring staat bij ons centraal.",
+    ],
+    closingBold: "Klaar om jouw feest naar een hoger niveau te tillen?",
+    cta: { href: "#contact", label: "Boek jouw photobooth" },
     bullets: [],
   },
 ];
@@ -40,27 +66,57 @@ export default function FeatureSplit() {
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.7 }}
                 >
-                  <div className="grid items-start gap-5 md:gap-10 lg:gap-14 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)]">
+                  <div className="grid items-start gap-5 md:gap-10 lg:items-center lg:gap-14 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)]">
                     {/* IMAGE: links op lg; op mobiel onder de tekst (order) */}
                     <div className="relative order-2 h-[380px] w-full overflow-hidden rounded-3xl bg-[#1c1c1c] shadow-[0_20px_50px_rgba(0,0,0,0.45)] ring-1 ring-[#C8A45B]/25 sm:h-[420px] lg:order-1 lg:h-[440px]">
-                      <Image
-                        src={feature.image}
-                        alt={feature.alt}
-                        fill
-                        className="object-contain object-center"
-                        sizes="(max-width: 1024px) 100vw, 46vw"
-                        priority
-                      />
+                      {feature.videoSrc ? (
+                        <video
+                          className="absolute inset-0 h-full w-full object-contain object-center"
+                          autoPlay
+                          muted
+                          loop
+                          playsInline
+                          aria-label={feature.alt}
+                        >
+                          <source src={feature.videoSrc} type="video/mp4" />
+                        </video>
+                      ) : feature.image ? (
+                        <Image
+                          src={feature.image}
+                          alt={feature.alt}
+                          fill
+                          className="object-contain object-center"
+                          sizes="(max-width: 1024px) 100vw, 46vw"
+                          priority
+                        />
+                      ) : null}
                     </div>
 
                     {/* TEKST: op mobiel eerst; op lg rechts van de foto */}
-                    <div className="order-1 lg:order-2 lg:pt-16">
+                    <div className="order-1 lg:order-2">
                       <h3 className="mb-4 text-3xl font-semibold text-[#C8A45B] md:text-4xl font-serif leading-tight">
                         {feature.title}
                       </h3>
-                      <p className="mb-6 text-lg leading-relaxed text-[#F5F5F5]/80 md:text-xl">
-                        {feature.description}
-                      </p>
+                      {"paragraphs" in feature && feature.paragraphs ? (
+                        <div className="mb-6 space-y-4 text-lg leading-relaxed text-[#F5F5F5]/80 md:text-xl">
+                          {feature.paragraphs.map((para, pi) => (
+                            <p key={pi}>{para}</p>
+                          ))}
+                          {"closingEmphasis" in feature &&
+                            feature.closingEmphasis && (
+                              <p>
+                                {feature.closingEmphasis.before}
+                                <em className="whitespace-nowrap italic text-[#F5F5F5]/90">
+                                  {feature.closingEmphasis.italic}
+                                </em>
+                              </p>
+                            )}
+                        </div>
+                      ) : feature.description ? (
+                        <p className="mb-6 text-lg leading-relaxed text-[#F5F5F5]/80 md:text-xl">
+                          {feature.description}
+                        </p>
+                      ) : null}
                       <ul className="space-y-3">
                         {feature.bullets.map((bullet, bulletIndex) => (
                           <li key={bulletIndex} className="flex items-start gap-3 text-[#F5F5F5]">
@@ -85,15 +141,36 @@ export default function FeatureSplit() {
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.7 }}
                 >
-                  <div className="grid items-start gap-5 md:gap-10 lg:gap-14 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]">
+                  <div className="grid items-start gap-5 md:gap-10 lg:items-center lg:gap-14 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]">
                     {/* LEFT: TEXT */}
-                    <div className="feature-split-over-title-wrap min-w-0 lg:pt-16">
-                      <h3 className="feature-split-over-title mb-4 font-semibold text-[#C8A45B] font-serif">
+                    <div className="min-w-0">
+                      <h3 className="mb-4 text-3xl font-semibold text-[#C8A45B] md:text-4xl font-serif leading-tight">
                         {feature.title}
                       </h3>
-                      <p className="mb-4 md:mb-6 text-lg leading-relaxed text-[#F5F5F5]/80 md:text-xl">
-                        {feature.description}
-                      </p>
+                      {"paragraphs" in feature && feature.paragraphs ? (
+                        <div className="mb-6 space-y-4 text-lg leading-relaxed text-[#F5F5F5]/80 md:text-xl">
+                          {feature.paragraphs.map((para, pi) => (
+                            <p key={pi}>{para}</p>
+                          ))}
+                          {"closingBold" in feature && feature.closingBold && (
+                            <p className="font-bold text-[#F5F5F5]">
+                              {feature.closingBold}
+                            </p>
+                          )}
+                        </div>
+                      ) : feature.description ? (
+                        <p className="mb-4 md:mb-6 text-lg leading-relaxed text-[#F5F5F5]/80 md:text-xl">
+                          {feature.description}
+                        </p>
+                      ) : null}
+                      {"cta" in feature && feature.cta && (
+                        <Link
+                          href={feature.cta.href}
+                          className="cta-gold group mb-6 inline-flex h-14 items-center justify-center rounded-full bg-[#C8A45B] px-8 text-base font-semibold text-[#0B0B0B] shadow-lg transition-all hover:bg-[#C8A45B] hover:shadow-xl hover:scale-105 active:scale-100 focus:outline-none focus:ring-2 focus:ring-[#C8A45B]/50 focus:ring-offset-2 focus:ring-offset-[#252525]"
+                        >
+                          {feature.cta.label}
+                        </Link>
+                      )}
                       <ul className="space-y-3">
                         {feature.bullets.map((bullet, bulletIndex) => (
                           <li key={bulletIndex} className="flex items-start gap-3 text-[#F5F5F5]">
@@ -106,13 +183,15 @@ export default function FeatureSplit() {
 
                     {/* RIGHT: IMAGE */}
                     <div className="relative h-[380px] w-full overflow-hidden rounded-3xl bg-[#1c1c1c] shadow-[0_20px_50px_rgba(0,0,0,0.45)] ring-1 ring-[#C8A45B]/25 sm:h-[420px] lg:h-[440px]">
-                      <Image
-                        src={feature.image}
-                        alt={feature.alt}
-                        fill
-                        className="object-contain object-center"
-                        sizes="(max-width: 1024px) 100vw, 46vw"
-                      />
+                      {feature.image ? (
+                        <Image
+                          src={feature.image}
+                          alt={feature.alt}
+                          fill
+                          className="object-contain object-center"
+                          sizes="(max-width: 1024px) 100vw, 46vw"
+                        />
+                      ) : null}
                     </div>
                   </div>
                 </motion.div>
@@ -133,15 +212,17 @@ export default function FeatureSplit() {
               >
                 {/* Image Column */}
                 <div className="relative h-[420px] w-full overflow-hidden rounded-2xl md:w-1/2">
-                  <Image
-                    src={feature.image}
-                    alt={feature.alt ?? feature.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    unoptimized={feature.image === "/images/callmemaybe-hero.jpg"}
-                    priority={index === 0}
-                  />
+                  {feature.image ? (
+                    <Image
+                      src={feature.image}
+                      alt={feature.alt ?? feature.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      unoptimized={feature.image === "/images/callmemaybe-hero.jpg"}
+                      priority={index === 0}
+                    />
+                  ) : null}
                 </div>
 
                 {/* Text Column */}
@@ -149,9 +230,11 @@ export default function FeatureSplit() {
                   <h3 className="mb-4 text-3xl font-semibold text-[#F5F5F5] md:text-4xl font-serif leading-tight">
                     {feature.title}
                   </h3>
-                  <p className="mb-6 text-lg leading-relaxed text-[#F5F5F5]/80 md:text-xl">
-                    {feature.description}
-                  </p>
+                  {feature.description ? (
+                    <p className="mb-6 text-lg leading-relaxed text-[#F5F5F5]/80 md:text-xl">
+                      {feature.description}
+                    </p>
+                  ) : null}
                   <ul className="space-y-3">
                     {feature.bullets.map((bullet, bulletIndex) => (
                       <li key={bulletIndex} className="flex items-start gap-3 text-[#F5F5F5]">

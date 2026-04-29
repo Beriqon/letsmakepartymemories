@@ -319,9 +319,6 @@ export default function ProductPanels() {
                 <div className="text-6xl font-bold text-[#F5F5F5] md:text-7xl lg:text-8xl font-serif tracking-tight leading-none drop-shadow-[0_6px_22px_rgba(200,164,91,0.20)]">
                   €345
                 </div>
-                <div className="text-sm text-[#F5F5F5]/70 mt-2">
-                  excl. btw
-                </div>
               </div>
             </div>
 

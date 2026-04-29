@@ -22,6 +22,23 @@ function StarIcon({ className }: { className?: string }) {
 const reviews: Review[] = [
   {
     stars: 5,
+    text: "Super leuke photobooth. Heel veel plezier van gehad op mijn feestje! En ook hele lieve mensen. Echt een dikke 10!😊😊",
+    author: "Britt Kraak",
+    event: "Review van Google",
+    date: "",
+    initials: "BK",
+  },
+  {
+    stars: 5,
+    text: "Hele fijne ervaring gehad met Let’s make party memories tijdens onze surprise party!\n\nZe hadden alles mooi opgezet en het contact was heel goed! Ook hebben ze een mooi kader ontworpen voor de foto’s dat goed paste bij het thema van het feest.\nDe photobooth met alle leuke accessoires heeft de avond echt afgemaakt!!\n\nIk zou het daarom ook zeker aan iedereen aanraden!",
+    author: "Anne",
+    event: "Review van Google",
+    date: "",
+    initials: "AN",
+    avatarSrc: "/reviews/anne.png",
+  },
+  {
+    stars: 5,
     text: "De photobooth was een leuke aanvulling op mijn feestje. Service vanuit Lisa en Peter was top. Na afloop heb ik alle foto's digitaal ontvangen.",
     author: "Angélique Haverkamp",
     event: "Review van Google",

@@ -20,19 +20,50 @@ interface ReviewsCarouselProps {
 }
 
 const AUTOPLAY_MS = 4000;
+const PINNED_AUTHORS = ["britt kraak", "anne"];
+const PINNED_REVIEWS: Review[] = [
+  {
+    stars: 5,
+    text: "Super leuke photobooth. Heel veel plezier van gehad op mijn feestje! En ook hele lieve mensen. Echt een dikke 10!😊😊",
+    author: "Britt Kraak",
+    event: "Review van Google",
+    date: "",
+    initials: "BK",
+  },
+  {
+    stars: 5,
+    text: "Hele fijne ervaring gehad met Let’s make party memories tijdens onze surprise party!\n\nZe hadden alles mooi opgezet en het contact was heel goed! Ook hebben ze een mooi kader ontworpen voor de foto’s dat goed paste bij het thema van het feest.\nDe photobooth met alle leuke accessoires heeft de avond echt afgemaakt!!\n\nIk zou het daarom ook zeker aan iedereen aanraden!",
+    author: "Anne",
+    event: "Review van Google",
+    date: "",
+    initials: "AN",
+    avatarSrc: "/reviews/anne.png",
+  },
+];
 
 export default function ReviewsCarousel({ reviews }: ReviewsCarouselProps) {
-  const reviewCount = reviews.length;
+  const orderedReviews = useMemo(() => {
+    const byAuthor = new Map(reviews.map((review) => [review.author.toLowerCase(), review]));
+    const pinnedFirst = PINNED_AUTHORS.map(
+      (author, index) => byAuthor.get(author) ?? PINNED_REVIEWS[index]
+    );
+    const remaining = reviews.filter(
+      (review) => !PINNED_AUTHORS.includes(review.author.toLowerCase())
+    );
+    return [...pinnedFirst, ...remaining];
+  }, [reviews]);
+
+  const reviewCount = orderedReviews.length;
 
   const loopSlides = useMemo(
-    () => [...reviews, ...reviews],
-    [reviews]
+    () => [...orderedReviews, ...orderedReviews],
+    [orderedReviews]
   );
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
       loop: false,
-      align: "center",
+      align: "start",
       containScroll: false,
       skipSnaps: false,
       dragFree: false,

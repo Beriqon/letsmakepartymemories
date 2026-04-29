@@ -24,9 +24,14 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Photobooth huren | Let's Make Party Memories",
+  title: "Luxe mirror photobooth huren | Let's Make Party Memories",
   description:
     "Huur een photobooth voor jouw event. Onbeperkt foto's, prints en luxe props. Boek direct.",
+  icons: {
+    icon: "/logo/logoicon.png",
+    shortcut: "/logo/logoicon.png",
+    apple: "/logo/logoicon.png",
+  },
 };
 
 export default function RootLayout({
